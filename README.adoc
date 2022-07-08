@@ -606,3 +606,4 @@ We now have seen how to implement a simple producer/consumer for our Kafka.
 
 
 
+

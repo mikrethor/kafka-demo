@@ -22,6 +22,8 @@
     <modules>
         <module>kafka-producer</module>
         <module>kafka-consumer</module>
+        <module>kafka-webflux-producer</module>
+        <module>kafka-webflux-consumer</module>
     </modules>
 
 </project>
