@@ -16,7 +16,7 @@ class TopicProducer(
     }
 
     fun send( message:String) {
-        LOGGER.info("Payload sent: {}", message);
-        kafkaTemplate.send(topicName, message);
+        LOGGER.info("Payload sent: {}", message)
+        kafkaTemplate.send(topicName, message)
     }
 }

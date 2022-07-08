@@ -10,10 +10,6 @@ import org.springframework.web.bind.annotation.RestController
 class KafkaController(val topicProducer: TopicProducer) {
     @GetMapping(value = ["send"])
     fun send(@RequestParam(name = "message") message: String?) {
-        if (message == null) {
-            topicProducer.send("Mensagem de teste enviada ao tópico")
-        } else {
-            topicProducer.send(message)
-        }
+        topicProducer.send(message ?: "Test message sent to topic")
     }
 }

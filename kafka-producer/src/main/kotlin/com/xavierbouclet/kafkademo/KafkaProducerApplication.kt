@@ -6,8 +6,8 @@ import org.springframework.kafka.annotation.EnableKafka
 
 @EnableKafka
 @SpringBootApplication
-class KafkaDemoApplication
+class KafkaProducerApplication
 
 fun main(args: Array<String>) {
-    runApplication<KafkaDemoApplication>(*args)
+    runApplication<KafkaProducerApplication>(*args)
 }
