@@ -4,10 +4,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.kafka.annotation.EnableKafka
 
-@EnableKafka
 @SpringBootApplication
-class KafkaConsumerApplication
+class KafkaWebfluxConsumerApplication
 
 fun main(args: Array<String>) {
-    runApplication<KafkaConsumerApplication>(*args)
+    runApplication<KafkaWebfluxConsumerApplication>(*args)
 }
