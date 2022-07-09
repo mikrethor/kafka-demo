@@ -18,7 +18,7 @@ class TopicProducer(
     }
 
     fun send( message:String): Mono<SenderResult<Void>> {
-        LOGGER.info("Payload sent: {}", message)
+        LOGGER.info("Payload sent: {} to {}", message, topicName)
         return kafkaTemplate.send(topicName, message)
     }
 }
