@@ -15,8 +15,7 @@ class MessageHandler(private val producer: TopicProducer) {
             }
             else -> "default message"
         }
-        producer.send(message)
-        return ServerResponse.ok()
-            .build()
+
+        return producer.send(message).map { ServerResponse.ok().build() }.flatMap{it}
     }
 }
