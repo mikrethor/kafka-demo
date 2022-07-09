@@ -5,6 +5,8 @@ spring:
             bootstrap-servers: 127.0.0.1:9092
             key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
             value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            group-id: group_id
+
 server:
     port: 8081
 
