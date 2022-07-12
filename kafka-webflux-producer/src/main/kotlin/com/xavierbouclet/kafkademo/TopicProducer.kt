@@ -10,7 +10,8 @@ import reactor.kafka.sender.SenderResult
 @Service
 class TopicProducer(
     @Value("\${topic.name.producer}") private val topicName: String,
-    val kafkaTemplate: ReactiveKafkaProducerTemplate<String, String>
+    val reactiveKafkaProducerTemplate: ReactiveKafkaProducerTemplate<String, String>,
+    val reactiveKafkaProducerJsonTemplate: ReactiveKafkaProducerTemplate<String, Message>
 ) {
 
     companion object {
@@ -19,6 +20,11 @@ class TopicProducer(
 
     fun send( message:String): Mono<SenderResult<Void>> {
         LOGGER.info("Payload sent: {} to {}", message, topicName)
-        return kafkaTemplate.send(topicName, message)
+        return reactiveKafkaProducerTemplate.send(topicName, message)
+    }
+
+    fun send( message:Message): Mono<SenderResult<Void>> {
+        LOGGER.info("Payload sent: {} to {}", message, topicName)
+        return reactiveKafkaProducerJsonTemplate.send(topicName, message)
     }
 }

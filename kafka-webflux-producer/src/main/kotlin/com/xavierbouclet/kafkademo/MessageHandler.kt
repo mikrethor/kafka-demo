@@ -1,5 +1,7 @@
 package com.xavierbouclet.kafkademo
 
+import org.springframework.http.HttpStatus
+import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.ServerRequest
 import org.springframework.web.reactive.function.server.ServerResponse
@@ -16,6 +18,17 @@ class MessageHandler(private val producer: TopicProducer) {
             else -> "default message"
         }
 
-        return producer.send(message).map { ServerResponse.ok().build() }.flatMap{it}
+        return producer.send(message).map { ServerResponse.ok().build() }.flatMap { it }
+    }
+
+    fun sendJson(request: ServerRequest): Mono<ServerResponse> {
+        return request.bodyToMono(Message::class.java)
+            .map { producer.send(it) }
+            .flatMap {
+                ServerResponse
+                    .status(HttpStatus.CREATED)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .build()
+            }
     }
 }

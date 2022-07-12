@@ -13,6 +13,9 @@ class ApplicationRouter(val messageHandler: MessageHandler) {
             "/send".nest {
                 GET("", messageHandler::send)
             }
+            "/json".nest {
+                POST("", messageHandler::sendJson)
+            }
         }
     }
 }

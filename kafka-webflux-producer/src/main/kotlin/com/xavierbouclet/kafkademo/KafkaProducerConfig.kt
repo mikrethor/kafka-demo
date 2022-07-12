@@ -13,4 +13,8 @@ class ReactiveKafkaProducerConfig {
     fun reactiveKafkaProducerTemplate(properties: KafkaProperties) =
         ReactiveKafkaProducerTemplate<String, String>(SenderOptions.create(properties.buildProducerProperties()))
 
+    @Bean
+    fun reactiveKafkaProducerJsonTemplate(properties: KafkaProperties) =
+        ReactiveKafkaProducerTemplate<String, Message>(SenderOptions.create(properties.buildProducerProperties()))
+
 }
