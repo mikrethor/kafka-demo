@@ -1,0 +1,30 @@
+spring:
+    kafka:
+        consumer:
+            auto-offset-reset: earliest
+            bootstrap-servers: 127.0.0.1:9092
+            key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+            group-id: group_id
+            properties:
+                spring:
+                    json:
+                        use:
+                            type:
+                                headers: false
+
+                        value:
+                            default:
+                                type: com.xavierbouclet.kafkaconsumer.Message
+    properties:
+        spring:
+            json:
+                trusted:
+                    packages: '*'
+
+server:
+    port: 8081
+
+topic:
+    name:
+        consumer: quickstart

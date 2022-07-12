@@ -1,0 +1,27 @@
+# Producer properties
+spring:
+  kafka:
+    producer:
+      bootstrap-servers: 127.0.0.1:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+
+#  jackson:
+#    serialization:
+#      FAIL_ON_EMPTY_BEANS: false
+
+topic:
+  name:
+    producer: quickstart
+  
+auto:
+  create:
+    topics:
+      enable: true
+
+
+
+logging:
+  level:
+    root: DEBUG

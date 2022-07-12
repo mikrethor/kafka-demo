@@ -24,6 +24,8 @@
         <module>kafka-consumer</module>
         <module>kafka-webflux-producer</module>
         <module>kafka-webflux-consumer</module>
+        <module>kafka-webflux-producer-avro</module>
+        <module>kafka-webflux-consumer-avro</module>
     </modules>
 
 </project>
