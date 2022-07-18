@@ -18,12 +18,12 @@ class TopicProducer(
         private val LOGGER = LoggerFactory.getLogger(TopicProducer::class.java)
     }
 
-    fun send( message:String): Mono<SenderResult<Void>> {
+    fun send(message: String): Mono<SenderResult<Void>> {
         LOGGER.info("Payload sent: {} to {}", message, topicName)
         return reactiveKafkaProducerTemplate.send(topicName, message)
     }
 
-    fun send( message:Message): Mono<SenderResult<Void>> {
+    fun send(message: Message): Mono<SenderResult<Void>> {
         LOGGER.info("Payload sent: {} to {}", message, topicName)
         return reactiveKafkaProducerJsonTemplate.send(topicName, message)
     }

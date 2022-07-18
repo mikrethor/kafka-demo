@@ -28,3 +28,9 @@ server:
 topic:
     name:
         consumer: quickstart
+
+logging:
+    level:
+        com:
+            xavierbouclet:
+                kafkaconsumer: DEBUG

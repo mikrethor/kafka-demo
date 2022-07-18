@@ -28,9 +28,15 @@ class TopicListener(
                     it.headers()
                 )
             }
-            .map { it.value() }
+            .doOnError {
+                LOGGER.info("eee")
+            }
+            .map { LOGGER.info("map ")
+                it.value() }
             .doOnNext { LOGGER.info("successfully consumed {}={}", Message::class.java.simpleName, it) }
             .doOnError { LOGGER.error("something bad happened while consuming : {}", it.message) }
+            .doFinally { LOGGER.info("bip") }
+            .doOnCancel { LOGGER.info("cancel") }
     }
 
 }
