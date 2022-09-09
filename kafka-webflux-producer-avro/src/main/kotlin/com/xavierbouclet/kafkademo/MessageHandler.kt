@@ -24,11 +24,13 @@ class MessageHandler(private val producer: TopicProducer) {
     fun sendJson(request: ServerRequest): Mono<ServerResponse> {
         return request.bodyToMono(Message::class.java)
             .map { producer.send(it) }
-            .flatMap {
+            .flatMap { it }
+            .map {
                 ServerResponse
                     .status(HttpStatus.CREATED)
                     .contentType(MediaType.APPLICATION_JSON)
                     .build()
             }
+            .flatMap { it }
     }
 }

@@ -7,14 +7,14 @@ import reactor.core.publisher.Flux
 
 @Service
 class TopicListener(
-    private val reactiveKafkaConsumerTemplate: ReactiveKafkaConsumerTemplate<String, Message>
+    private val reactiveKafkaConsumerTemplate: ReactiveKafkaConsumerTemplate<String, com.xavierbouclet.kafkademo.avro.Message>
 ) {
 
     companion object {
         private val LOGGER = LoggerFactory.getLogger(TopicListener::class.java)
     }
 
-    fun consumeTopic(): Flux<Message> {
+    fun consumeTopic(): Flux<com.xavierbouclet.kafkademo.avro.Message> {
         return reactiveKafkaConsumerTemplate
             .receiveAutoAck()
             .doOnNext {
@@ -29,7 +29,7 @@ class TopicListener(
                 )
             }
             .map { it.value() }
-            .doOnNext { LOGGER.info("successfully consumed {}={}", Message::class.java.simpleName, it) }
+            .doOnNext { LOGGER.info("successfully consumed {}={}", com.xavierbouclet.kafkademo.avro.Message::class.java.simpleName, it) }
             .doOnError { LOGGER.error("something bad happened while consuming : {}", it.message) }
     }
 

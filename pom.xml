@@ -9,6 +9,7 @@
     <description>kafka-demo</description>
     <packaging>pom</packaging>
     <properties>
+        <avro.version>1.11.0</avro.version>
         <java.version>17</java.version>
         <kotlin.version>1.7.10</kotlin.version>
         <maven.failsafe.plugin.version>3.0.0-M3</maven.failsafe.plugin.version>

@@ -4,7 +4,8 @@ spring:
             auto-offset-reset: earliest
             bootstrap-servers: 127.0.0.1:9092
             key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-            value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+            value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+
             group-id: group_id
             properties:
                 spring:
@@ -15,7 +16,11 @@ spring:
 
                         value:
                             default:
-                                type: com.xavierbouclet.kafkaconsumer.Message
+                                type: com.xavierbouclet.kafkademo.avro.Message
+                schema.registry.url: http://localhost:8081/
+                key.serializer: org.apache.kafka.common.serialization.StringDeserializer
+                value.serializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+
     properties:
         spring:
             json:

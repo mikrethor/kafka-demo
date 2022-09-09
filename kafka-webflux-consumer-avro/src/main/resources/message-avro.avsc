@@ -1,0 +1,16 @@
+{
+  "namespace": "com.xavierbouclet.kafkademo.avro",
+  "type": "record",
+  "name": "Message",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string",
+      "logicalType": "UUID"
+    },
+    {
+      "name": "message",
+      "type": "string"
+    }
+  ]
+}

@@ -13,13 +13,13 @@ import java.util.*
 class ReactiveKafkaConsumerConfig {
 
     @Bean
-    fun kafkaReceiverOptions(@Value(value = "\${topic.name.consumer}") topic: String, kafkaProperties: KafkaProperties): ReceiverOptions<String?, Message> {
-        val basicReceiverOptions: ReceiverOptions<String, Message> = ReceiverOptions.create(kafkaProperties.buildConsumerProperties())
+    fun kafkaReceiverOptions(@Value(value = "\${topic.name.consumer}") topic: String, kafkaProperties: KafkaProperties): ReceiverOptions<String?, com.xavierbouclet.kafkademo.avro.Message> {
+        val basicReceiverOptions: ReceiverOptions<String, com.xavierbouclet.kafkademo.avro.Message> = ReceiverOptions.create(kafkaProperties.buildConsumerProperties())
         return basicReceiverOptions.subscription(Collections.singletonList(topic))
     }
 
     @Bean
-    fun reactiveKafkaConsumerTemplate(kafkaReceiverOptions: ReceiverOptions<String, Message>) =
+    fun reactiveKafkaConsumerTemplate(kafkaReceiverOptions: ReceiverOptions<String, com.xavierbouclet.kafkademo.avro.Message>) =
         ReactiveKafkaConsumerTemplate(kafkaReceiverOptions)
 
 }
