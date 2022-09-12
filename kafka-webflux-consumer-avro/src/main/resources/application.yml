@@ -18,9 +18,7 @@ spring:
                             default:
                                 type: com.xavierbouclet.kafkademo.avro.Message
                 schema.registry.url: http://localhost:8081/
-                key.serializer: org.apache.kafka.common.serialization.StringDeserializer
-                value.serializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
-
+                specific.avro.reader: true
     properties:
         spring:
             json:
