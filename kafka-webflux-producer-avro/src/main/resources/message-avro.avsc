@@ -5,8 +5,11 @@
   "fields": [
     {
       "name": "id",
-      "type": "string",
-      "logicalType": "UUID"
+      "type":
+       {
+        "type": "string",
+        "logicalType" : "uuid"
+       }
     },
     {
       "name": "message",
